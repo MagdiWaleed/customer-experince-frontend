@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_BASE_URL = "http://127.0.0.1:5000" 
+API_BASE_URL = "https://8000-dep-01k6shs1zhw3fsqmh36deeyebg-d.cloudspaces.litng.ai" 
 
 st.title("User Authentication")
 

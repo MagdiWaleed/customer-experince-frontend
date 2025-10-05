@@ -24,7 +24,7 @@ else:
         with st.spinner("🤖 Thinking..."):
             try:
                 response = requests.post(
-                    "http://127.0.0.1:5000/chat/",
+                    "https://8000-dep-01k6shs1zhw3fsqmh36deeyebg-d.cloudspaces.litng.ai/chat/",
                     json={
                         "token": st.session_state.token,
                         "message": prompt

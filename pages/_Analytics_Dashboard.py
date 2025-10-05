@@ -5,7 +5,7 @@ import requests
 st.set_page_config(page_title="Admin Dashboard Analytics", layout="wide")
 st.title("📊 Admin Dashboard Analytics")
 
-API_STATS_URL = "http://127.0.0.1:5000/dashboard"  
+API_STATS_URL = "https://8000-dep-01k6shs1zhw3fsqmh36deeyebg-d.cloudspaces.litng.ai/dashboard"  
 
 try:
     resp = requests.get(API_STATS_URL)

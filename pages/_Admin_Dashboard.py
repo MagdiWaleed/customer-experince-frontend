@@ -5,9 +5,9 @@ import requests
 st.set_page_config(page_title="Admin Dashboard", layout="wide")
 st.title("🛠️ Admin Dashboard")
 
-PROCEDURES = "http://127.0.0.1:5000/procedure"
-SERVICES = "http://127.0.0.1:5000/service"
-PRODUCTS = "http://127.0.0.1:5000/product"
+PROCEDURES = "https://8000-dep-01k6shs1zhw3fsqmh36deeyebg-d.cloudspaces.litng.ai/procedure"
+SERVICES = "https://8000-dep-01k6shs1zhw3fsqmh36deeyebg-d.cloudspaces.litng.ai/service"
+PRODUCTS = "https://8000-dep-01k6shs1zhw3fsqmh36deeyebg-d.cloudspaces.litng.ai/product"
 
 st.header("Procedures Management")
 
@@ -126,7 +126,7 @@ if st.button("Create Embeddings"):
         with st.spinner("Creating embeddings..."):
             try:
                 response = requests.get(
-                    "http://127.0.0.1:5000/create-embedding/",
+                    "https://8000-dep-01k6shs1zhw3fsqmh36deeyebg-d.cloudspaces.litng.ai/create-embedding/",
                     timeout=120
                 )
                 if response.status_code == 200:

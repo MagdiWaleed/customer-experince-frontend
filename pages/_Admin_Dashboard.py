@@ -12,7 +12,7 @@ PRODUCTS = "https://8000-dep-01k6sj99nxkqpr1m5srkmwgyk8-d.cloudspaces.litng.ai/p
 st.header("Procedures Management")
 
 try:
-    resp = requests.get(PROCEDURES+"/all")
+    resp = requests.get(PROCEDURES+"/all/")
     procedures = resp.json()
 except:
     procedures = []
@@ -24,7 +24,7 @@ for proc in procedures:
         for step in proc.get("steps", []):
             st.markdown(f"- Step {step['step_number']}: {step['title']}")
         if st.button(f"Delete Procedure {proc['id']}"):
-            requests.delete(f"{PROCEDURES}/delete/{proc['id']}")
+            requests.delete(f"{PROCEDURES}/delete/{proc['id']}/")
             st.success(f"Deleted procedure {proc['id']}")
             st.rerun()
 
@@ -48,7 +48,7 @@ with st.form("add_proc"):
             except:
                 st.error(f"Invalid step line: {line}")
         data = {"title": title, "description": description, "steps": steps}
-        r = requests.post(PROCEDURES+"/add", json=data)
+        r = requests.post(PROCEDURES+"/add/", json=data)
         if r.status_code == 201:
             st.success("Procedure added successfully!")
             st.rerun()
@@ -58,7 +58,7 @@ with st.form("add_proc"):
 st.header("Services Management")
 
 try:
-    resp = requests.get(SERVICES+'/all')
+    resp = requests.get(SERVICES+'/all/')
     Services = resp.json()
 except:
     Services = []
@@ -67,7 +67,7 @@ except:
 for sub in Services:
     st.markdown(f"- **{sub['service_name']}** | Category: {sub['category']} | Price: ${sub['service_price']}")
     if st.button(f"Delete Service {sub['service_name']}"):
-        requests.delete(f"{SERVICES}/delete/{sub['service_id']}")
+        requests.delete(f"{SERVICES}/delete/{sub['service_id']}/")
         st.success(f"Deleted Service {sub['service_name']}")
         st.rerun()
 
@@ -79,7 +79,7 @@ with st.form("add_sub"):
     submitted_sub = st.form_submit_button("Add Service")
     if submitted_sub:
         data = {"name": name, "price": price, "category": category}
-        r = requests.post(SERVICES+"/add", json=data)
+        r = requests.post(SERVICES+"/add/", json=data)
         if r.status_code == 201:
             st.success("Service added successfully!")
             st.rerun()
@@ -89,7 +89,7 @@ with st.form("add_sub"):
 st.header("Products Management")
 
 try:
-    resp = requests.get(PRODUCTS+"/all")
+    resp = requests.get(PRODUCTS+"/all/")
     products = resp.json()
 except:
     products = []
@@ -98,7 +98,7 @@ except:
 for prod in products:
     st.markdown(f"- **{prod['title']}** | Price: ${prod['price']}")
     if st.button(f"Delete Product {prod['title']}"):
-        requests.delete(f"{PRODUCTS}/delete/{prod['id']}")
+        requests.delete(f"{PRODUCTS}/delete/{prod['id']}/")
         st.success(f"Deleted product {prod['title']}")
         st.rerun()
 
@@ -110,7 +110,7 @@ with st.form("add_prod"):
     submitted_prod = st.form_submit_button("Add Product")
     if submitted_prod:
         data = {"title": title, "price": price,"category": category}
-        r = requests.post(PRODUCTS+"/add", json=data)
+        r = requests.post(PRODUCTS+"/add/", json=data)
         if r.status_code == 201:
             st.success("Product added successfully!")
             st.rerun()
